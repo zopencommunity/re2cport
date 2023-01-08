@@ -1,3 +1,3 @@
-patchport
+re2c
 
-Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.
+re2c is a free and open-source lexer generator for C/C++, Go and Rust.
