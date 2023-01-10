@@ -2,7 +2,7 @@ export ZOPEN_TYPE="GIT"
 
 export ZOPEN_GIT_URL="https://github.com/skvadrik/re2c.git"
 export ZOPEN_GIT_BRANCH="3.0"
-export ZOPEN_GIT_DEPS="git make m4 autoconf perl libtool automake"
+export ZOPEN_GIT_DEPS="git make m4 autoconf perl libtool automake bash zoslib tar sed coreutils"
 
 export ZOPEN_BOOTSTRAP="./autogen.sh"
 
@@ -15,12 +15,14 @@ zopen_check_results()
   # Echo the following information to guage build health
 
   totalTests=$(grep '# TOTAL: ' ${chk} | awk ' { print $3; }')
-  actualFailures=$(grep '# FAIL: ' ${chk} | awk ' { print $3; }')
+  failures=$(egrep '^# FAIL:|^# ERROR:|^# XFAIL' ${chk} | awk '{sum+=$3;} END{print sum;}')
   expectedFailures=0
 
-  echo "actualFailures:${actualFailures}"
-  echo "expectedFailures:${expectedFailures}"
-  echo "totalTests:${totalTests}"
+   cat <<ZZ
+actualFailures:$failures
+totalTests:$totalTests
+expectedFailures:1
+ZZ
 }
 
 zopen_append_to_env()
