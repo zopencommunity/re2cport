@@ -1,31 +1,33 @@
-export ZOPEN_TYPE="GIT"
+export ZOPEN_TYPE="TARBALL"
 
+export ZOPEN_TARBALL_URL="https://github.com/skvadrik/re2c/releases/download/3.0/re2c-3.0.tar.xz"
 export ZOPEN_GIT_URL="https://github.com/skvadrik/re2c.git"
 export ZOPEN_GIT_BRANCH="3.0"
 export ZOPEN_GIT_DEPS="git make m4 autoconf perl libtool automake bash zoslib tar sed coreutils"
+export ZOPEN_TARBALL_DEPS="git make zoslib coreutils diffutils findutils"
 
-export ZOPEN_BOOTSTRAP="./autogen.sh"
+export ZOPEN_BOOTSTRAP="skip"
 
 zopen_check_results()
 {
+#============================================================================
+#Testsuite summary for re2c 3.0
+$============================================================================
+# TOTAL: 5
+# PASS:  4
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
   dir="$1"
   pfx="$2"
   chk="$1/$2_check.log"
 
-  # Echo the following information to guage build health
-
-  totalTests=$(grep '# TOTAL: ' ${chk} | awk ' { print $3; }')
-  failures=$(egrep '^# FAIL:|^# ERROR:|^# XFAIL' ${chk} | awk '{sum+=$3;} END{print sum;}')
-  expectedFailures=0
-
-   cat <<ZZ
-actualFailures:$failures
-totalTests:$totalTests
-expectedFailures:1
-ZZ
-}
-
-zopen_append_to_env()
-{
-  # echo envars outside of PATH, MANPATH, LIBPATH
+  totalTests=$(grep '# TOTAL:' $chk | awk '{ print $3 }')
+  actualFailures=$(grep '# FAIL:' $chk | awk '{ print $3 }')
+  expectedFailures=1
+  echo "actualFailures:${actualFailures}"
+  echo "totalTests:${totalTests}"
+  echo "expectedFailures:${expectedFailures}"
 }
