@@ -1,10 +1,12 @@
-export ZOPEN_TYPE="TARBALL"
+# bump: re2c-version /RE2C_VERSION="(.*)"/ https://github.com/skvadrik/re2c.git|semver:*
+RE2C_VERSION="3.0"
 
-export ZOPEN_TARBALL_URL="https://github.com/skvadrik/re2c/releases/download/3.0/re2c-3.0.tar.xz"
-export ZOPEN_GIT_URL="https://github.com/skvadrik/re2c.git"
-export ZOPEN_GIT_BRANCH="3.0"
-export ZOPEN_GIT_DEPS="git make m4 autoconf perl libtool automake bash zoslib tar sed coreutils"
-export ZOPEN_TARBALL_DEPS="git make zoslib coreutils diffutils findutils"
+export ZOPEN_TYPE="STABLE"
+export ZOPEN_STABLE_URL="https://github.com/skvadrik/re2c/releases/download/${RE2C_VERSION}/re2c-${RE2C_VERSION}.tar.xz"
+export ZOPEN_STABLE_DEPS="git make zoslib coreutils diffutils findutils"
+export ZOPEN_DEV_BRANCH="3.0"
+export ZOPEN_DEV_URL="https://github.com/skvadrik/re2c.git"
+export ZOPEN_DEV_DEPS="git make m4 autoconf perl libtool automake bash zoslib tar sed coreutils"
 
 export ZOPEN_BOOTSTRAP="skip"
 
@@ -30,4 +32,9 @@ $============================================================================
   echo "actualFailures:${actualFailures}"
   echo "totalTests:${totalTests}"
   echo "expectedFailures:${expectedFailures}"
+}
+
+zopen_get_version()
+{
+  echo "$RE2C_VERSION"
 }
