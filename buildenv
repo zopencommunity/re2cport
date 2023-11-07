@@ -1,7 +1,7 @@
 # bump: re2c-version /RE2C_VERSION="(.*)"/ https://github.com/skvadrik/re2c.git|semver:*
 RE2C_VERSION="3.0"
 
-export ZOPEN_TYPE="STABLE"
+export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_STABLE_URL="https://github.com/skvadrik/re2c/releases/download/${RE2C_VERSION}/re2c-${RE2C_VERSION}.tar.xz"
 export ZOPEN_STABLE_DEPS="git make zoslib coreutils diffutils findutils"
 export ZOPEN_DEV_BRANCH="3.0"
