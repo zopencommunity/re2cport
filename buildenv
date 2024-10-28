@@ -2,6 +2,7 @@
 RE2C_VERSION="3.1"
 
 export ZOPEN_BUILD_LINE="STABLE"
+export ZOPEN_CATEGORIES="development"
 export ZOPEN_STABLE_URL="https://github.com/skvadrik/re2c/releases/download/${RE2C_VERSION}/re2c-${RE2C_VERSION}.tar.xz"
 export ZOPEN_STABLE_DEPS="git make zoslib coreutils diffutils findutils python"
 export ZOPEN_DEV_BRANCH="3.0"
