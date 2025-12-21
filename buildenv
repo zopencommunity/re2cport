@@ -1,5 +1,5 @@
 # bump: re2c-version /RE2C_VERSION="(.*)"/ https://github.com/skvadrik/re2c.git|semver:*
-RE2C_VERSION="4.3.1"
+RE2C_VERSION="4.4"
 
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_CATEGORIES="development"
